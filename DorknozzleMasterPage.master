@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DorknozzleMasterPage.master.cs" Inherits="DorknozzleMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="Header">
+        <!-- Creat an image control to set the page nammer praphic -->
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/image/header.gif" Width="450" Height="174"
+            AlternateText="The Official Dorknozzle Company Internet" />
+
+        </div><!--End of Header-->
+
+        <div class="Menu">
+        <!--Add SiteMapDataSource control, this control will read from the Web.Sitemap.-->
+           <asp:SiteMapDataSource ID="dorknozzleSiteMap" runat="server" ShowStartingNode="false" />
+           &nbsp;<asp:Menu ID="dorknozzleMenu" runat="server" 
+                DataSourceID="dorknozzleSiteMap"> 
+            <StaticItemTemplate>
+                <asp:Image ID="Image2" ImageUrl="~/image/book_closed.gif"
+                 AlternateText="+"  Width="16" Height="16" BorderWidth="0" runat="server"></asp:Image>
+                 <%# Eval("Text")%>
+            </StaticItemTemplate>
+        </asp:Menu>
+        </div><!--End of Menu-->
+
+        <div class="Content">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div><!--End of Content-->
+    </div><!--End of mainDiv-->
+    </form>
+</body>
+</html>
